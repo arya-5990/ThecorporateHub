@@ -591,49 +591,150 @@
 .leadership-cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 18px;
+  gap: 24px;
+  margin-top: 22px;
 }
 
 .leader-profile-box {
-  background: #f8fafc;
+  background: #ffffff;
   border: 1.5px solid #cbd5e1;
-  border-radius: 6px;
-  padding: 24px 20px;
+  border-radius: 8px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
 .leader-profile-box:hover {
   border-color: #193563;
   background-color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(25, 53, 99, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Executive Photo Slot & Image Frames */
+.leader-photo-slot-wrapper {
+  width: 100%;
+  height: 330px;
+  position: relative;
+  background-color: #0d1e38;
+  overflow: hidden;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.leader-image-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.leader-portrait-img {
+  object-fit: cover;
+  object-position: center 40%;
+  transition: transform 0.4s ease;
+}
+
+.leader-profile-box:hover .leader-portrait-img {
+  transform: scale(1.03);
+}
+
+.leader-image-badge-tag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(25, 53, 99, 0.9);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Placeholder Frame for Leaders without photo */
+.leader-image-frame.placeholder-frame {
+  background: radial-gradient(circle at 50% 38%, rgba(255, 96, 0, 0.12) 0%, transparent 68%),
+              linear-gradient(155deg, #193563 0%, #0d1d36 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.placeholder-silhouette-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.placeholder-avatar-bubble {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px dashed rgba(255, 255, 255, 0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  font-size: 34px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.leader-profile-box:hover .placeholder-avatar-bubble {
+  border-color: #ff6000;
+  color: #ff6000;
+  background: rgba(255, 96, 0, 0.14);
+  transform: scale(1.05);
+}
+
+.placeholder-initials-badge {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: #ff6000;
+  padding: 3px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  box-shadow: 0 2px 8px rgba(255, 96, 0, 0.3);
+}
+
+.placeholder-slot-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* Card Body */
+.leader-card-body {
+  padding: 22px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .leader-header-bar {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
   margin-bottom: 14px;
   border-bottom: 1px solid #e2e8f0;
   padding-bottom: 14px;
-}
-
-.leader-monogram {
-  width: 48px;
-  height: 48px;
-  border-radius: 4px;
-  background: #193563;
-  color: #ffffff;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 1.05rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  letter-spacing: 0.5px;
 }
 
 .leader-meta {
@@ -643,18 +744,18 @@
 
 .leader-full-name {
   font-family: "Archivo Black", sans-serif;
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   color: #0f172a;
   margin: 0 0 4px 0;
   line-height: 1.25;
 }
 
 .leader-designation-text {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: #ff6000;
   line-height: 1.35;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .leader-exp-pill {

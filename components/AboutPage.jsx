@@ -2,7 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import "./AboutPage.css";
+import dhavalImg from "@/assets/dhavalsir1.jpeg";
 import {
   FiArrowRight,
   FiCheck,
@@ -12,6 +14,7 @@ import {
   FiShield,
   FiCompass,
   FiUsers,
+  FiUser,
   FiAward
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -23,6 +26,8 @@ export default function AboutPage() {
       role: "Founder | Business & Corporate Consultant",
       experience: "8+ Years Experience",
       initials: "CS",
+      image: dhavalImg,
+      imagePosition: "center 55%",
       bio: "With 8+ years of professional experience, Dhaval leads The Corporate Hub with a focus on helping entrepreneurs build, structure and grow their businesses.",
       expertise: [
         "Business Consulting & Startup Structuring",
@@ -38,6 +43,7 @@ export default function AboutPage() {
       role: "Co-Founder | Tax & Financial Consultant",
       experience: "8+ Years Experience",
       initials: "CA",
+      image: null,
       bio: "With 8+ years of experience, Rahulsingh brings strong expertise in taxation, audit, financial management and international accounting, helping businesses strengthen their financial and compliance framework.",
       expertise: [
         "GST & Indirect Taxation",
@@ -53,6 +59,7 @@ export default function AboutPage() {
       role: "Co-Founder | Income Tax & Accounting Consultant",
       experience: "10+ Years Experience",
       initials: "CMA",
+      image: null,
       bio: "With 10+ years of experience, Arjun specializes in taxation, accounting and financial compliance, with extensive experience supporting businesses, trusts and non-profit organisations.",
       expertise: [
         "Income Tax Planning & Advisory",
@@ -387,27 +394,55 @@ export default function AboutPage() {
             <div className="leadership-cards-container">
               {leadership.map((leader, index) => (
                 <div key={index} className="leader-profile-box">
-                  <div className="leader-header-bar">
-                    <div className="leader-monogram">{leader.initials}</div>
-                    <div className="leader-meta">
-                      <h3 className="leader-full-name">{leader.name}</h3>
-                      <div className="leader-designation-text">{leader.role}</div>
-                      <span className="leader-exp-pill">{leader.experience}</span>
-                    </div>
+                  <div className="leader-photo-slot-wrapper">
+                    {leader.image ? (
+                      <div className="leader-image-frame has-image">
+                        <Image
+                          src={leader.image}
+                          alt={leader.name}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
+                          className="leader-portrait-img"
+                          style={leader.imagePosition ? { objectPosition: leader.imagePosition } : undefined}
+                          priority={index === 0}
+                        />
+                        <div className="leader-image-badge-tag">{leader.initials}</div>
+                      </div>
+                    ) : (
+                      <div className="leader-image-frame placeholder-frame" aria-label={`Photo slot for ${leader.name}`}>
+                        <div className="placeholder-silhouette-container">
+                          <div className="placeholder-avatar-bubble">
+                            <FiUser className="placeholder-user-icon" />
+                          </div>
+                          <span className="placeholder-initials-badge">{leader.initials}</span>
+                          <span className="placeholder-slot-label">Official Portrait Slot</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  <p className="leader-bio-paragraph">{leader.bio}</p>
+                  <div className="leader-card-body">
+                    <div className="leader-header-bar">
+                      <div className="leader-meta">
+                        <h3 className="leader-full-name">{leader.name}</h3>
+                        <div className="leader-designation-text">{leader.role}</div>
+                        <span className="leader-exp-pill">{leader.experience}</span>
+                      </div>
+                    </div>
 
-                  <div className="leader-expertise-section">
-                    <div className="expertise-header-label">CORE EXPERTISE</div>
-                    <ul className="leader-expertise-bullets">
-                      {leader.expertise.map((item, idx) => (
-                        <li key={idx}>
-                          <FiCheck className="check-bullet" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="leader-bio-paragraph">{leader.bio}</p>
+
+                    <div className="leader-expertise-section">
+                      <div className="expertise-header-label">CORE EXPERTISE</div>
+                      <ul className="leader-expertise-bullets">
+                        {leader.expertise.map((item, idx) => (
+                          <li key={idx}>
+                            <FiCheck className="check-bullet" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               ))}
