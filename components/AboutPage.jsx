@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import "./AboutPage.css";
 import dhavalImg from "@/assets/dhavalsir1.jpeg";
+import rahulImg from "@/assets/rahul.jpg";
+import arjunImg from "@/assets/arjun.jpg";
 import {
   FiArrowRight,
   FiCheck,
@@ -43,7 +45,8 @@ export default function AboutPage() {
       role: "Co-Founder | Tax & Financial Consultant",
       experience: "8+ Years Experience",
       initials: "CA",
-      image: null,
+      image: rahulImg,
+      imagePosition: "center 25%",
       bio: "With 8+ years of experience, Rahulsingh brings strong expertise in taxation, audit, financial management and international accounting, helping businesses strengthen their financial and compliance framework.",
       expertise: [
         "GST & Indirect Taxation",
@@ -59,7 +62,8 @@ export default function AboutPage() {
       role: "Co-Founder | Income Tax & Accounting Consultant",
       experience: "10+ Years Experience",
       initials: "CMA",
-      image: null,
+      image: arjunImg,
+      imagePosition: "center 25%",
       bio: "With 10+ years of experience, Arjun specializes in taxation, accounting and financial compliance, with extensive experience supporting businesses, trusts and non-profit organisations.",
       expertise: [
         "Income Tax Planning & Advisory",
