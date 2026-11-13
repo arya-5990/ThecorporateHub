@@ -593,6 +593,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 22px;
+  margin-bottom: 22px;
 }
 
 .leader-profile-box {
