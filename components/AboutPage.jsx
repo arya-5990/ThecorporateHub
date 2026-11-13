@@ -7,12 +7,6 @@ import "./AboutPage.css";
 import dhavalImg from "@/assets/dhavalsir1.jpeg";
 import rahulImg from "@/assets/rahul.jpg";
 import arjunImg from "@/assets/arjun.jpg";
-import e1 from "@/assets/e1.png";
-import e2 from "@/assets/e2.jpg";
-import e3 from "@/assets/e3.jpg";
-import e4 from "@/assets/e4.png";
-import e5 from "@/assets/e5.png";
-import e6 from "@/assets/e6.png";
 import {
   FiArrowRight,
   FiCheck,
@@ -83,118 +77,6 @@ export default function AboutPage({ employees = [] }) {
       ]
     }
   ];
-  
-// team members (updated)
-const teamMembers = [
-  {
-    id: 1,
-    name: "employee 1",
-    role: "Senior Accounts Executive",
-    experience: "5+ Years Experience",
-    initials: "AS",
-    image: e1,
-    imagePosition: "center 25%",
-    bio: "With 5+ years of experience, Aarav specializes in accounting operations, financial reporting and bookkeeping, supporting businesses with accurate financial records and compliance.",
-    expertise: [
-      "Accounting & Bookkeeping",
-      "Financial Reporting",
-      "GST Compliance",
-      "Account Reconciliation",
-      "Financial Documentation",
-      "Business Accounting Support",
-    ],
-  },
-  {
-    id: 2,
-    name: "employee 2",
-    role: "Taxation Executive",
-    experience: "4+ Years Experience",
-    initials: "PP",
-    image: e4,
-    imagePosition: "center 25%",
-    bio: "With 4+ years of experience, Priya specializes in taxation support, tax return preparation and compliance documentation, assisting clients with their tax-related requirements.",
-    expertise: [
-      "Income Tax Return Preparation",
-      "GST Returns & Filings",
-      "Tax Documentation",
-      "Tax Compliance Support",
-      "Financial Record Review",
-      "Taxation Assistance",
-    ],
-  },
-  {
-    id: 3,
-    name: "employee 3",
-    role: "Corporate Compliance Executive",
-    experience: "4+ Years Experience",
-    initials: "RM",
-    image: e2,
-    imagePosition: "center 25%",
-    bio: "With 4+ years of experience, Rohan supports corporate compliance, statutory documentation and regulatory filings, helping businesses maintain their compliance requirements.",
-    expertise: [
-      "Corporate Compliance",
-      "ROC & MCA Filings",
-      "Statutory Documentation",
-      "Company Incorporation Support",
-      "Annual Compliance",
-      "Regulatory Documentation",
-    ],
-  },
-  {
-    id: 4,
-    name: "employee 4",
-    role: "Business Advisory Associate",
-    experience: "3+ Years Experience",
-    initials: "NS",
-    image: e6,
-    imagePosition: "center 25%",
-    bio: "With 3+ years of experience, Neha supports business advisory activities, financial documentation and business planning, helping clients navigate their operational requirements.",
-    expertise: [
-      "Business Advisory Support",
-      "Business Documentation",
-      "Financial Planning Support",
-      "Startup Assistance",
-      "Client Coordination",
-      "Business Process Support",
-    ],
-  },
-  {
-    id: 5,
-    name: "employee 5",
-    role: "Intellectual Property Associate",
-    experience: "3+ Years Experience",
-    initials: "KD",
-    image: e3,
-    imagePosition: "center 25%",
-    bio: "With 3+ years of experience, Karan supports intellectual property documentation and trademark-related processes, assisting clients with application preparation and follow-ups.",
-    expertise: [
-      "Trademark Application Support",
-      "Intellectual Property Documentation",
-      "Trademark Search Assistance",
-      "Application Follow-ups",
-      "Client Documentation",
-      "IP Compliance Support",
-    ],
-  },
-  {
-    id: 6,
-    name: "employee 6",
-    role: "Client Relationship Executive",
-    experience: "2+ Years Experience",
-    initials: "MJ",
-    image: e5,
-    imagePosition: "center 25%",
-    bio: "With 2+ years of experience, Meera focuses on client communication, service coordination and relationship management, ensuring smooth communication throughout client engagements.",
-    expertise: [
-      "Client Relationship Management",
-      "Client Communication",
-      "Service Coordination",
-      "Client Onboarding Support",
-      "Documentation Follow-ups",
-      "Client Service Assistance",
-    ],
-  },
-];
 
   const lifecycleStages = [
     { num: "01", title: "Business Registration", desc: "Private Limited, LLP, OPC, Section 8, Partnerships & sole proprietorship structuring." },
@@ -573,178 +455,12 @@ const teamMembers = [
             </div>
           </div>
 
-          {/* Meet Our Team Section (managed from the admin panel) */}
-          {employees.length > 0 && (
-            <div className="about-white-card section-card leadership-section-card" id="team">
-              <div className="card-top-tag">Our Professionals</div>
-              <h2 className="card-section-title">Meet Our Team</h2>
-              <p className="card-body-text">
-                Our team of professionals works alongside our leadership to deliver accurate, timely and
-                compliant support across accounting, taxation and corporate compliance.
-              </p>
-
-              <div className="leadership-cards-container">
-                {employees.map((member) => (
-                  <div key={member.id} className="leader-profile-box">
-                    <div className="leader-photo-slot-wrapper">
-                      {member.image ? (
-                        <div className="leader-image-frame has-image">
-                          <Image
-                            src={member.image}
-                            alt={member.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
-                            className="leader-portrait-img"
-                            unoptimized={isRemoteImage(member.image)}
-                          />
-                          <div className="leader-image-badge-tag">{getInitials(member.name)}</div>
-                        </div>
-                      ) : (
-                        <div className="leader-image-frame placeholder-frame" aria-label={`Photo of ${member.name}`}>
-                          <div className="placeholder-silhouette-container">
-                            <div className="placeholder-avatar-bubble">
-                              <FiUser className="placeholder-user-icon" />
-                            </div>
-                            <span className="placeholder-initials-badge">{getInitials(member.name)}</span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="leader-card-body">
-                      <div className="leader-header-bar">
-                        <div className="leader-meta">
-                          <h3 className="leader-full-name">{member.name}</h3>
-                          <div className="leader-designation-text">{member.designation}</div>
-                          {member.experience && (
-                            <span className="leader-exp-pill">{member.experience}</span>
-                          )}
-                        </div>
-                      </div>
-
-                      {member.description && (
-                        <p className="leader-bio-paragraph">{member.description}</p>
-                      )}
-
-                      {member.responsibilities.length > 0 && (
-                        <div className="leader-expertise-section">
-                          <div className="expertise-header-label">CORE EXPERTISE</div>
-                          <ul className="leader-expertise-bullets">
-                            {member.responsibilities.map((item, idx) => (
-                              <li key={idx}>
-                                <FiCheck className="check-bullet" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Extended Team & Professional Ecosystem */}
-          <div className="about-white-card section-card">
+          {/* Meet Our Team & Extended Ecosystem Section */}
+          <div className="about-white-card section-card leadership-section-card" id="team">
             <div className="card-top-tag">Collaborative Platform</div>
             <h2 className="card-section-title">Our Team & Professional Network</h2>
 
-            {/* Extended Team & Professional Ecosystem  (updated)*/}
-            <div className="leadership-cards-container">
-              {teamMembers.map((member, index) => (
-                <div key={member.id} className="leader-profile-box">
-
-                  {/* Employee Photo */}
-                  <div className="leader-photo-slot-wrapper">
-                    {member.image ? (
-                      <div className="leader-image-frame has-image">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
-                          className="leader-portrait-img"
-                          style={
-                            member.imagePosition
-                              ? { objectPosition: member.imagePosition }
-                              : undefined
-                          }
-                          priority={index === 0}
-                        />
-
-                        <div className="leader-image-badge-tag">
-                          {member.initials}
-                        </div>
-                      </div>
-                    ) : (
-                      <div
-                        className="leader-image-frame placeholder-frame"
-                        aria-label={`Photo slot for ${member.name}`}
-                      >
-                        <div className="placeholder-silhouette-container">
-                          <div className="placeholder-avatar-bubble">
-                            <FiUser className="placeholder-user-icon" />
-                          </div>
-
-                          <span className="placeholder-initials-badge">
-                            {member.initials}
-                          </span>
-
-                          <span className="placeholder-slot-label">
-                            Official Portrait Slot
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Employee Details */}
-                  <div className="leader-card-body">
-                    <div className="leader-header-bar">
-                      <div className="leader-meta">
-                        <h3 className="leader-full-name">
-                          {member.name}
-                        </h3>
-
-                        <div className="leader-designation-text">
-                          {member.role}
-                        </div>
-
-                        <span className="leader-exp-pill">
-                          {member.experience}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Employee Bio */}
-                    <p className="leader-bio-paragraph">
-                      {member.bio}
-                    </p>
-
-                    {/* Employee Expertise */}
-                    <div className="leader-expertise-section">
-                      <div className="expertise-header-label">
-                        CORE EXPERTISE
-                      </div>
-
-                      <ul className="leader-expertise-bullets">
-                        {member.expertise.map((item, idx) => (
-                          <li key={idx}>
-                            <FiCheck className="check-bullet" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                </div>
-              ))}
-            </div>
-
-            <div className="team-ecosystem-grid">
+            <div className="team-ecosystem-grid" style={{ marginTop: "12px" }}>
               <div className="team-col">
                 <h3 className="subcol-title">Expertise Beyond Our Leadership</h3>
                 <p className="card-body-text">
@@ -781,6 +497,81 @@ const teamMembers = [
                 </p>
               </div>
             </div>
+
+            {employees.length > 0 && (
+              <div
+                className="team-cards-subblock"
+                style={{ marginTop: "40px", paddingTop: "32px", borderTop: "1.5px solid #e2e8f0" }}
+              >
+                <div className="card-top-tag">Our Professionals</div>
+                <h3 className="card-section-title" style={{ fontSize: "1.5rem" }}>Meet Our Team</h3>
+                <p className="card-body-text">
+                  Our team of professionals works alongside our leadership to deliver accurate, timely and
+                  compliant support across accounting, taxation and corporate compliance.
+                </p>
+
+                <div className="leadership-cards-container">
+                  {employees.map((member) => (
+                    <div key={member.id} className="leader-profile-box">
+                      <div className="leader-photo-slot-wrapper">
+                        {member.image ? (
+                          <div className="leader-image-frame has-image">
+                            <Image
+                              src={member.image}
+                              alt={member.name}
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
+                              className="leader-portrait-img"
+                              unoptimized={isRemoteImage(member.image)}
+                            />
+                            <div className="leader-image-badge-tag">{getInitials(member.name)}</div>
+                          </div>
+                        ) : (
+                          <div className="leader-image-frame placeholder-frame" aria-label={`Photo of ${member.name}`}>
+                            <div className="placeholder-silhouette-container">
+                              <div className="placeholder-avatar-bubble">
+                                <FiUser className="placeholder-user-icon" />
+                              </div>
+                              <span className="placeholder-initials-badge">{getInitials(member.name)}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="leader-card-body">
+                        <div className="leader-header-bar">
+                          <div className="leader-meta">
+                            <h3 className="leader-full-name">{member.name}</h3>
+                            <div className="leader-designation-text">{member.designation}</div>
+                            {member.experience && (
+                              <span className="leader-exp-pill">{member.experience}</span>
+                            )}
+                          </div>
+                        </div>
+
+                        {member.description && (
+                          <p className="leader-bio-paragraph">{member.description}</p>
+                        )}
+
+                        {member.responsibilities.length > 0 && (
+                          <div className="leader-expertise-section">
+                            <div className="expertise-header-label">CORE EXPERTISE</div>
+                            <ul className="leader-expertise-bullets">
+                              {member.responsibilities.map((item, idx) => (
+                                <li key={idx}>
+                                  <FiCheck className="check-bullet" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Bottom Call to Action Card */}
