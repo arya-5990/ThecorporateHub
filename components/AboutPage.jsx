@@ -26,8 +26,10 @@ import {
   FiAward
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa6";
+import { isRemoteImage, getInitials } from "@/lib/employees/imageUtils";
 
-export default function AboutPage() {
+// `employees` comes from Supabase (managed in the admin panel) via app/about/page.jsx
+export default function AboutPage({ employees = [] }) {
   const leadership = [
     {
       name: "CS Dhaval Gohel",
@@ -570,6 +572,79 @@ const teamMembers = [
               ))}
             </div>
           </div>
+
+          {/* Meet Our Team Section (managed from the admin panel) */}
+          {employees.length > 0 && (
+            <div className="about-white-card section-card leadership-section-card" id="team">
+              <div className="card-top-tag">Our Professionals</div>
+              <h2 className="card-section-title">Meet Our Team</h2>
+              <p className="card-body-text">
+                Our team of professionals works alongside our leadership to deliver accurate, timely and
+                compliant support across accounting, taxation and corporate compliance.
+              </p>
+
+              <div className="leadership-cards-container">
+                {employees.map((member) => (
+                  <div key={member.id} className="leader-profile-box">
+                    <div className="leader-photo-slot-wrapper">
+                      {member.image ? (
+                        <div className="leader-image-frame has-image">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
+                            className="leader-portrait-img"
+                            unoptimized={isRemoteImage(member.image)}
+                          />
+                          <div className="leader-image-badge-tag">{getInitials(member.name)}</div>
+                        </div>
+                      ) : (
+                        <div className="leader-image-frame placeholder-frame" aria-label={`Photo of ${member.name}`}>
+                          <div className="placeholder-silhouette-container">
+                            <div className="placeholder-avatar-bubble">
+                              <FiUser className="placeholder-user-icon" />
+                            </div>
+                            <span className="placeholder-initials-badge">{getInitials(member.name)}</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="leader-card-body">
+                      <div className="leader-header-bar">
+                        <div className="leader-meta">
+                          <h3 className="leader-full-name">{member.name}</h3>
+                          <div className="leader-designation-text">{member.designation}</div>
+                          {member.experience && (
+                            <span className="leader-exp-pill">{member.experience}</span>
+                          )}
+                        </div>
+                      </div>
+
+                      {member.description && (
+                        <p className="leader-bio-paragraph">{member.description}</p>
+                      )}
+
+                      {member.responsibilities.length > 0 && (
+                        <div className="leader-expertise-section">
+                          <div className="expertise-header-label">CORE EXPERTISE</div>
+                          <ul className="leader-expertise-bullets">
+                            {member.responsibilities.map((item, idx) => (
+                              <li key={idx}>
+                                <FiCheck className="check-bullet" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Extended Team & Professional Ecosystem */}
           <div className="about-white-card section-card">

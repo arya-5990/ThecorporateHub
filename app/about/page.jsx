@@ -1,6 +1,10 @@
 import React from "react";
 import AboutPage from "@/components/AboutPage";
 import CorporateFooter from "@/components/CorporateFooter";
+import { getEmployees } from "@/lib/employees/getEmployees";
+
+// Fetch employees from the DB on every request so admin changes show immediately
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "About Us | The Corporate Hub - CA • CS • CMA Expertise Under One Roof",
@@ -22,11 +26,13 @@ export const metadata = {
   }
 };
 
-export default function Page() {
+export default async function Page() {
+  const employees = await getEmployees();
+
   return (
     <main style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <div style={{ flex: 1 }}>
-        <AboutPage />
+        <AboutPage employees={employees} />
       </div>
       <CorporateFooter />
     </main>
